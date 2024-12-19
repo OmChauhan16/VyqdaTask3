@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // To handle CORS
 
 const app = express();
 const PORT = 8000;
@@ -8,8 +9,11 @@ const PORT = 8000;
 // Use body-parser to parse incoming JSON data
 app.use(bodyParser.json());
 
+// Enable CORS for all routes
+app.use(cors());
+
 app.post('/post-phonenumber', async (req, res) => {
-  const { phonenumber } = req.body; 
+  const { phonenumber } = req.body;
 
   if (!phonenumber) {
     return res.status(400).send('Phone number is required');
@@ -22,14 +26,14 @@ app.post('/post-phonenumber', async (req, res) => {
     // Extract headers from the response
     const headers = response.headers;
 
-    // Send the headers back in the response
+    // Send the headers back in JSON format
     res.json({
       message: 'Headers received from the API:',
-      headers
+      headers,
     });
   } catch (error) {
-    console.error('Error posting to the API:', error);
-    res.status(500).send('An error occurred while posting data to the API.');
+    console.error('Error posting to the API:', error.message);
+    res.status(500).json({ error: 'An error occurred while posting data to the API.' });
   }
 });
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Headers Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>API Header Data Viewer</h1>
+  <label for="phonenumber">Enter Phone Number:</label>
+  <input type="text" id="phonenumber" placeholder="Enter phone number">
+  <button onclick="postData()">Submit</button>
+
+  <h2>Headers Received</h2>
+  <table id="headersTable">
+    <thead>
+      <tr>
+        <th>Header Name</th>
+        <th>Header Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be appended here dynamically -->
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
